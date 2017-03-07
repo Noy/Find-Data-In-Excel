@@ -39,6 +39,10 @@ func main() {
 				// Iterate through the cells
 				for _, cell := range row.Cells {
 					// In our case, we are checking if the data we entered matches any cell in our sheets
+					/*
+					  In my case I was searching upper case data to lower cased data, that's why I did strings.ToLower.
+					  Change it to: if cell.Value == strings.Replace(nextText, "\n", "", -1) { If you just want to do the check
+					 */
 					if cell.Value == strings.ToLower(strings.Replace(nextText, "\n", "", -1)) {
 						// Increment our count
 						count++
@@ -51,7 +55,7 @@ func main() {
 	}
 	/*
 	   If the count is 0 it would mean that no data was passed, therefore we safely know it didn't match our string
-	   which we entered to any string in the excel document. Thought this was a smart way to do the check lol
+	   which we entered to match any string in the excel document. Thought this was a smart way to do the check lol
 	 */
 	if count == 0 { fmt.Println("Could not find that pattern") } // Wanted a confirmation message
 }
@@ -63,5 +67,3 @@ func handleError(err error) {
 	// ..and the error
 	fmt.Println(err)
 }
-
-//// OLD STUFF
