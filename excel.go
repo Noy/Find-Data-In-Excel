@@ -38,12 +38,24 @@ func main() {
 			for _, row := range sheet.Rows {
 				// Iterate through the cells
 				for _, cell := range row.Cells {
-					// In our case, we are checking if the data we entered matches any cell in our sheets
+					// Just wanted to make this a variable as I use it multiple times
+					removeNewlineOfText := strings.Replace(nextText, "\n", "", -1)
+					/*
+					   Here we are checking if the data we entered is contained in any cell in our sheets
+					   This means that say 'noys.site' is in a cell, if I search 'noy' it will find it
+					 */
+					if strings.Contains(cell.Value, removeNewlineOfText) {
+						// Increment our count again
+						count++
+						// Print our our count, the text entered, the file name and the cell value (text in the cell)
+						fmt.Println(count, removeNewlineOfText + " - pattern contained in: " + file.Name() + " - Cell Name: " + cell.Value)
+					}
 					/*
 					  In my case I was searching upper case data to lower cased data, that's why I did strings.ToLower.
 					  Change it to: if cell.Value == strings.Replace(nextText, "\n", "", -1) { If you just want to do the check
 					 */
-					if cell.Value == strings.ToLower(strings.Replace(nextText, "\n", "", -1)) {
+					// Here we are checking if the data we entered matches any cell in our sheets
+					if cell.Value == strings.ToLower(removeNewlineOfText) {
 						// Increment our count
 						count++
 						// Let the user know where the pattern occurred
