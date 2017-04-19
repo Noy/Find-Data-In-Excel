@@ -28,7 +28,7 @@ Enter the data string:
 foo
 ```
 
-#### If it finds a contained version (e.g. if you search 'goo' and it finds 'google.com') it, it'll output
+#### If it finds a contained version (e.g. if you search 'goo' and it finds 'google.com') it'll output
 
 ```
 1 foo - pattern contained in: <spreadsheet>.xlsx - Cell Name: foobar
@@ -53,4 +53,4 @@ Could not find that pattern
 #### The whole string and the contained verion are _sort of_ the same thing, but I needed them in two different occasions, so they worked well as different outputs.
 
 
-##Hope this fits your needs!
+## Hope this fits your needs!
